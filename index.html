@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Simple BMI Calculatro</title>
+<style>
+	body{
+		margin: auto;
+		font-family: "Trebuchet MS";
+	}
+	.mob_header{
+		background-color: #000000;
+		color: #FFFFFF;
+		padding: 8px;
+		font-weight: bolder;
+		font-size: 24px;
+		width: 100%;
+		text-align: center;
+	}
+	input{
+		width:94%;
+		display:block;
+		border: 1px solid #999;
+		height: 25px;
+		-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		margin-left:8px;
+	}
+	select {
+	    padding:3px;
+		width:94%;
+		height: 25px;
+	    margin: 8px;
+	    -webkit-border-radius:4px;
+	    -moz-border-radius:4px;
+	    border-radius:4px;
+	    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+	    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+	    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+	    background: #f8f8f8;
+	    color:#888;
+	    border:none;
+	    outline:none;
+	    display: inline-block;
+	    -webkit-appearance:none;
+	    -moz-appearance:none;
+	    appearance:none;
+	    cursor:pointer;
+	}
+	span{
+		padding: 8px;
+		display: inline-block;
+		font-weight: bold;
+		color: #990000;
+	}
+	.button { color: #fff; padding: 8px 14px 10px; background-color: #bc1815; border: none; margin-right: 25px; position: relative;;
+		-webkit-user-select: none;
+		-webkit-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+		-moz-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+		box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+		-webkit-text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+		-moz-text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+		text-decoration:none;
+			 }
+	.button:active { position: relative; top: 3px;
+	    -webkit-box-shadow: inset 0px -3px 1px rgba(255, 255, 255, 1), inset 0 0px 3px rgba(0, 0, 0, 0.9);
+	    -moz-box-shadow: inset 0px -3px 1px rgba(255, 255, 255, 1), inset 0 0px 3px rgba(0, 0, 0, 0.9);
+	    box-shadow: inset 0px -3px 1px rgba(255, 255, 255, 1), inset 0 0px 3px rgba(0, 0, 0, 0.9);
+	}
+	.button:active:after { 
+		content: ""; 
+		width: 100%; 
+		height: 3px; 
+		background: #fff; 
+		position: absolute; 
+		bottom: -1px; 
+		left: 0; 
+	}
+	.btn_div{
+		text-align: center;
+		margin-top: 15px;
+	}
+	label {position:relative}
+	label:after {
+	    content:'<>';
+	    font:15px "Consolas", monospace;
+	    color:#aaa;
+	    -webkit-transform:rotate(90deg);
+	    -moz-transform:rotate(90deg);
+	    -ms-transform:rotate(90deg);
+	    transform:rotate(90deg);
+	    right:11px; top:2px;
+	    padding:0 0 2px;
+	    border-bottom:1px solid #ddd;
+	    position:absolute;
+	    pointer-events:none;
+	}
+	label:before {
+	    content:'';
+	    right:6px; top:0px;
+	    width:20px; height:20px;
+	    background:#f8f8f8;
+	    position:absolute;
+	    pointer-events:none;
+	    display:block;
+	}
+</style>
+</head>
+
+<body>
+<div class="mob_header">Simple BMI Calculator</div>
+<form>
+	<span>Enter Height:</span>
+	<input type="text" id="height" placeholder="Enter Height">
+	<label>
+	<select id="height_unit">
+		<option value="inches" selected="selected">Inches</option>
+		<option value="cm">Centimeters</option>
+	</select>
+	</label><br>
+	<span>Enter Weight:</span>
+	<input type="text" id="weight" placeholder="Enter Weight">
+	<label>
+	<select id="weight_unit">
+		<option value="pounds" selected="selected">Pounds</option>
+		<option value="kg">Kliograms</option>
+	</select></label><br>
+	<div class="btn_div"><a href="#" id="submit" class="button" onclick="validate();">Calculate</a></div>
+</form>
+<script>
+	function validate(){
+		if (document.getElementById('height').value == '' || document.getElementById('height').value == 0 || isNaN(document.getElementById('height').value))
+		{
+			alert('Please enter valid height');
+			document.getElementById('height').focus();
+			return false;
+		}else if (document.getElementById('weight').value == '' || document.getElementById('weight').value == 0 || isNaN(document.getElementById('weight').value))
+		{
+			alert('Please enter valid weight');
+			document.getElementById('weight').focus();
+			return false;
+		}else calc();
+	}
+	function calc(){
+		var height = document.getElementById('height').value;
+		var weight = document.getElementById('weight').value;
+		var e = document.getElementById("height_unit");
+		var height_unit = e.options[e.selectedIndex].value;
+		e = document.getElementById("weight_unit");
+		var weight_unit = e.options[e.selectedIndex].value;
+		if (height_unit == 'cm')
+			height = height * 0.39;
+		if (weight_unit == 'kg')
+			weight = weight * 2.2;
+		var bmi = (weight/(height*height))*703;
+		var message;
+		if (bmi<18)
+			message="You are underweight";
+		else if (bmi<=18.5)
+			message="You are thin for your height";
+		else if (bmi>=18.6 && bmi<=24.9)
+			message="You are helathy weight";
+		else if (bmi>=25 && bmi<=29.9)
+			message="You are over weight";
+		else if (bmi>=30)
+			message="You are obese";
+		alert(message);
+	}
+</script>
+</body>
+
+</html>
