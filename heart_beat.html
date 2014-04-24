@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Max Heart Rate Calculator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
+  </head>
+<style>
+	body {
+    padding-top: 51px;
+}
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {float:none;}
+</style>
+</head>
+
+<body>
+
+<div role="navigation" class="navbar navbar-default navbar-fixed-top">
+       <div class="container">
+    	<div class="navbar-header">
+           <!--<button data-target=".sidebar-nav" data-toggle="offcanvas" class="navbar-toggle" type="button">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>-->
+           <a href="#" class="navbar-brand">Max Heart Beat Calculator</a>
+    	</div>
+       </div>
+    </div>
+<div class="container" style="overflow:hidden">
+<div class="row" style="margin-top:20px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form">
+        	<fieldset>
+         	<div class="form-group">
+				<h3>Enter Age:</h3>
+				<input type="text" id="age" class="form-control input-lg" placeholder="Enter Age">
+             </div>
+    		<hr>
+			<a href="#" id="submit" class="btn btn-info btn-lg btn-block" onclick="validate();">Calculate</a>
+  			</fieldset>
+		</form>
+        	<br>
+        </div>
+	</div>
+</div>
+<script>
+	function validate(){
+		if (document.getElementById('age').value == '' || document.getElementById('age').value == 0 || isNaN(document.getElementById('age').value))
+		{
+			alert('Please enter valid age');
+			document.getElementById('age').focus();
+			return false;
+		}else calc();
+	}
+	function calc(){
+		var age = document.getElementById('age').value;
+		var max_rate = 207 - (0.7*age);
+		if (age<=15)
+			var resting_rate = '70 - 100';
+		else
+			var resting_rate = '60 - 100';
+		message="Resting Heart Rate: "+resting_rate+" BPM\n\nMax Heart Rate: "+max_rate+" BPM";
+		alert(message);
+	}
+</script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>	
+  </body>
+</html>
