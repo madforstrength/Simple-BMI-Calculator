@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Simple BMI Calculatro</title>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Simple BMI Calculator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
+  </head>
 <style>
-	body{
+	/*body{
 		margin: auto;
 		font-family: "Trebuchet MS";
 	}
@@ -108,30 +119,67 @@
 	    position:absolute;
 	    pointer-events:none;
 	    display:block;
-	}
+	}*/
+	body {
+    padding-top: 51px;
+}
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {float:none;}
 </style>
 </head>
 
 <body>
-<div class="mob_header">Simple BMI Calculator</div>
-<form>
-	<span>Enter Height:</span>
-	<input type="text" id="height" placeholder="Enter Height">
-	<label>
-	<select id="height_unit">
-		<option value="inches" selected="selected">Inches</option>
-		<option value="cm">Centimeters</option>
-	</select>
-	</label><br>
-	<span>Enter Weight:</span>
-	<input type="text" id="weight" placeholder="Enter Weight">
-	<label>
-	<select id="weight_unit">
-		<option value="pounds" selected="selected">Pounds</option>
-		<option value="kg">Kilograms</option>
-	</select></label><br>
-	<div class="btn_div"><a href="#" id="submit" class="button" onclick="validate();">Calculate</a></div>
-</form>
+
+<div role="navigation" class="navbar navbar-default navbar-fixed-top">
+       <div class="container">
+    	<div class="navbar-header">
+           <!--<button data-target=".sidebar-nav" data-toggle="offcanvas" class="navbar-toggle" type="button">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>-->
+           <a href="#" class="navbar-brand">Simple BMI Calculator</a>
+    	</div>
+       </div>
+    </div>
+<div class="container" style="overflow:hidden">
+<div class="row" style="margin-top:20px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form">
+        	<fieldset>
+         	<div class="form-group">
+				<h3>Enter Height:</h3>
+				<input type="text" id="height" class="form-control input-lg" placeholder="Enter Height">
+             </div>
+            <div class="form-group">
+                <select id="height_unit" class="form-control input-lg">
+                    <option value="inches" selected="selected">Inches</option>
+                    <option value="cm">Centimeters</option>
+                </select>
+            </div>
+    		<hr>
+			<div class="form-group">
+				<h3>Enter Weight:</h3>
+				<input type="text" id="weight" class="form-control input-lg" placeholder="Enter Weight">
+            </div>
+			<div class="form-group">
+				<select id="weight_unit" class="form-control input-lg">
+					<option value="pounds" selected="select ed">Pounds</option>
+					<option value="kg">Kilograms</option>
+				</select>
+            </div>
+			<a href="#" id="submit" class="btn btn-info btn-lg btn-block" onclick="validate();">Calculate</a>
+  			</fieldset>
+		</form>
+        	<br>
+        </div>
+	</div>
+</div>
 <script>
 	function validate(){
 		if (document.getElementById('height').value == '' || document.getElementById('height').value == 0 || isNaN(document.getElementById('height').value))
@@ -172,6 +220,6 @@
 		alert(message);
 	}
 </script>
-</body>
-
+<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>	
+  </body>
 </html>
