@@ -13,7 +13,7 @@
 <style> body {padding-top: 51px;}.navbar-header {float: left;padding: 15px;text-align: center;width: 100%;}.navbar-brand {float:none;}</style>
 </head>
 <body>
-<div role="navigation" class="navbar navbar-default navbar-fixed-top">
+<div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
        <div class="container">
     	<div class="navbar-header">
            <a href="index.html" class="btn btn-default pull-left">Home</a><a href="#" class="navbar-brand">Calories Calculator</a>
@@ -106,8 +106,8 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="js/jquery.js"></script>	
-<script type="text/javascript" src="js/bootstrap.min.js"></script>	
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -158,7 +158,7 @@ function cc()
 	if($("#gen").checked)
 	{
 		fd=(10*weight)+(6.25*height)-(5*age)+5;
-		
+
 	}
 	else
 	{
@@ -181,7 +181,7 @@ function cc()
 		case "5":
 			cneed=fd*1.9;
 			break;
-			
+
 	}
 	$('#input-data').hide();
 	$('#result').show();
