@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Simple Health Calculator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
+  </head>
+<style>
+	body {
+    padding-top: 51px;
+}
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {float:none;}
+</style>
+</head>
+
+<body>
+
+<div role="navigation" class="navbar navbar-default navbar-fixed-top">
+       <div class="container">
+    	<div class="navbar-header">
+           <a href="index.html" class="btn btn-default pull-left">Home</a><a href="#" class="navbar-brand">Calories Calculator</a>
+    	</div>
+       </div>
+    </div>
+<div class="container" id='input-data' style="overflow:hidden">
+	<div class="row" style="margin-top:20px">
+		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form" id='myform'>
+        	<fieldset>
+         	<div class="form-group">
+				<h3>Enter Age:</h3>
+				<input type="text" name="age" id="age" class="form-control input-lg" placeholder="Enter Age">
+             </div>
+         	<div class="form-group">
+                <h3>Gender:</h3>
+				<select id="gen" name='gen' class="form-control input-lg">
+					<option value="ml">Male</option>
+                    <option value="fm">Female</option>
+                </select>
+             </div>
+         	<div class="form-group">
+				<h3>Enter Height:</h3>
+				<input type="text" id="height" class="form-control input-lg" placeholder="Enter Height">
+             </div>
+            <div class="form-group">
+                <select id="height_unit" class="form-control input-lg">
+                    <option value="inches" selected="selected">Inches</option>
+                    <option value="cm">Centimeters</option>
+                </select>
+            </div>
+			<div class="form-group">
+				<h3>Enter Weight:</h3>
+				<input type="text" id="weight" class="form-control input-lg" placeholder="Enter Weight">
+            </div>
+			<div class="form-group">
+				<select id="weight_unit" class="form-control input-lg">
+					<option value="pounds" selected="select ed">Pounds</option>
+					<option value="kg">Kilograms</option>
+				</select>
+            </div>
+			<div class="form-group">
+				<h3>Activeness:</h3>
+			    <select name="loa" id="loa" class="form-control input-lg">
+				 <option value="1">Sedentary</option>
+				 <option value="2">Light Active</option>
+				 <option value="3">Moderately Active</option>
+				 <option value="4">Very Active</option>
+				 <option value="5">Extra Active</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<a href="#" id="submit" class="btn btn-info btn-lg btn-block" onclick="validate();">Calculate The Calorie</a>
+			</div>
+			 </fieldset>
+		</form>
+        </div>
+	</div>
+</div>
+<div class="container" id='result' style="overflow:hidden">
+	<div class="row" style="margin-top:20px">
+		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form">
+        	<fieldset>
+         	<div class="form-group">
+				<h3>Calorie Needed:</h3>
+				<input type="text" id="rc" class="form-control input-lg" readonly>
+            </div>
+			<div class="form-group">
+				<h3>You Must Intake The Following Daily</h3>
+            </div>
+			<div class="form-group">
+				<h3>Fat:</h3>
+				<input type="text" id="rf" class="form-control input-lg" readonly>
+            </div>
+			<div class="form-group">
+				<h3>Protein:</h3>
+				<input type="text" id="rp" class="form-control input-lg" readonly>
+            </div>
+			<div class="form-group">
+				<h3>Carbohydrate:</h3>
+				<input type="text" id="rh" class="form-control input-lg" readonly>
+            </div>
+			<div class="form-group">
+				<h3>Alcohol:</h3>
+				<input type="text" id="ra" class="form-control input-lg" readonly>
+            </div>
+			<div class="form-group">
+				<a href="#" id="submit" class="btn btn-info btn-lg btn-block" onclick="$('#input-data').show();$('#result').hide(); $('#myform')[0].reset();">ReCalculate</a>
+            </div>
+			</fieldset>
+		</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="bootstrap/js/jquery.js"></script>	
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>	
+
+<script>
+	$(document).ready(function(){
+		$('#input-data').show();
+		$('#result').hide();
+	});
+	function validate(){
+		if ($('#age').val() == '' || $('#age').val() == 0 || isNaN($('#age').val()))
+		{
+			alert('Please enter valid age');
+			$('#age').focus();
+			return false;
+		}
+		else if ($('#height').val() == '' || $('#height').val() == 0 || isNaN($('#height').val()))
+		{
+			alert('Please enter valid height');
+			$('#height').focus();
+			return false;
+		}
+		else if ($('#weight').val() == '' || $('#weight').val() == 0 || isNaN($('#weight').val()))
+		{
+			alert('Please enter valid weight');
+			$('#weight').focus();
+			return false;
+		}else cc();
+	}
+function cc()
+{
+	var cneed;
+	var fneed;
+	var crneed;
+	var pneed;
+	var aneed;
+	var fd;
+	var age=parseInt($('#age').val());
+	var height = parseInt($('#height').val());
+	var h_unit = $('#height_unit').val();
+	var weight=parseInt($('#weight').val());
+	var w_unit = $('#weight_unit').val();
+	if (w_unit == 'pounds')
+	{
+		weight = weight/2.2;
+	}
+	if (h_unit == 'inches')
+	{
+		height = height/0.39;
+	}
+	var loa= $('#loa').val();
+	if($("#gen").checked)
+	{
+		fd=(10*weight)+(6.25*height)-(5*age)+5;
+		
+	}
+	else
+	{
+		fd=(10*weight)+(6.25*height)-(5*age)-161;
+	}
+	switch(loa)
+	{
+		case "1":
+			cneed=fd*1.2;
+			break;
+		case "2":
+			cneed=fd*1.375
+			break;
+		case "3":
+			cneed=fd*1.53;
+			break;
+		case "4":
+			cneed=fd*1.725;
+			break;
+		case "5":
+			cneed=fd*1.9;
+			break;
+			
+	}
+	$('#input-data').hide();
+	$('#result').show();
+
+	cneed=Math.floor(cneed);
+	fneed=Math.floor((cneed*0.25)/9);
+	pneed=Math.floor((cneed*0.25)/4);
+	crneed=Math.floor((cneed*0.25)/4);
+	aneed=Math.floor((cneed*0.25)/7);
+	document.getElementById("rc").value=" "+cneed+" per day";
+	document.getElementById("rf").value=" "+fneed+" grams per day";
+	document.getElementById("rp").value=" "+pneed+" grams per day";
+	document.getElementById("rh").value=" "+crneed+" grams per day";
+	document.getElementById("ra").value=" "+aneed+" grams per day";
+}
+</script>
+  </body>
+</html>
+
