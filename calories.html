@@ -99,10 +99,6 @@
 				<input type="text" id="rh" class="form-control input-lg" readonly>
             </div>
 			<div class="form-group">
-				<h3>Alcohol:</h3>
-				<input type="text" id="ra" class="form-control input-lg" readonly>
-            </div>
-			<div class="form-group">
 				<a href="#" id="submit" class="btn btn-info btn-lg btn-block" onclick="$('#input-data').show();$('#result').hide(); $('#myform')[0].reset();">ReCalculate</a>
             </div>
 			</fieldset>
@@ -144,7 +140,6 @@ function cc()
 	var fneed;
 	var crneed;
 	var pneed;
-	var aneed;
 	var fd;
 	var age=parseInt($('#age').val());
 	var height = parseInt($('#height').val());
@@ -195,12 +190,10 @@ function cc()
 	fneed=Math.floor((cneed*0.25)/9);
 	pneed=Math.floor((cneed*0.25)/4);
 	crneed=Math.floor((cneed*0.25)/4);
-	aneed=Math.floor((cneed*0.25)/7);
 	document.getElementById("rc").value=" "+cneed+" per day";
 	document.getElementById("rf").value=" "+fneed+" grams per day";
 	document.getElementById("rp").value=" "+pneed+" grams per day";
 	document.getElementById("rh").value=" "+crneed+" grams per day";
-	document.getElementById("ra").value=" "+aneed+" grams per day";
 }
 </script>
   </body>
