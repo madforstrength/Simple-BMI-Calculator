@@ -7,37 +7,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Simple BMI Calculator</title>
-
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
   </head>
-<style>
-	body {
-    padding-top: 51px;
-}
-.navbar-header {
-    float: left;
-    padding: 15px;
-    text-align: center;
-    width: 100%;
-}
-.navbar-brand {float:none;}
-</style>
+<style> body {padding-top: 51px;}.navbar-header {float: left;padding: 15px;text-align: center;width: 100%;}.navbar-brand {float:none;}</style>
 </head>
-
 <body>
-
 <div role="navigation" class="navbar navbar-default navbar-fixed-top">
        <div class="container">
     	<div class="navbar-header">
-           <!--<button data-target=".sidebar-nav" data-toggle="offcanvas" class="navbar-toggle" type="button">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-           </button>-->
            <a href="index.html" class="btn btn-default pull-left">Home</a><a href="#" class="navbar-brand">Simple BMI Calculator</a>
     	</div>
        </div>
@@ -77,31 +55,18 @@
 </div>
 <script>
 	function validate(){
-		if ($('#age').val() == '' || $('#age').val() == 0 || isNaN($('#age').val()))
-		{
-			alert('Please enter valid age');
-			$('#age').focus();
-			return false;
-		}else if ($('#age').val() == '' || $('#age').val() == 0 || isNaN($('#age').val()))
-		{
-			alert('Please enter valid age');
-			$('#age').focus();
-			return false;
-		}
-		else if ($('#age').val() == '' || $('#age').val() == 0 || isNaN($('#age').val()))
-		{
-			alert('Please enter valid age');
-			$('#age').focus();
-			return false;
-		}
-		else if ($('#age').val() == '' || $('#age').val() == 0 || isNaN($('#age').val()))
-		{
-			alert('Please enter valid age');
-			$('#age').focus();
-			return false;
-		}
-		else calc();
-	}
+ 		if (document.getElementById('height').value == '' || document.getElementById('height').value == 0 || isNaN(document.getElementById('height').value))
+ 		{
+ 			alert('Please enter valid height');
+ 			document.getElementById('height').focus();
+ 			return false;
+ 		}else if (document.getElementById('weight').value == '' || document.getElementById('weight').value == 0 || isNaN(document.getElementById('weight').value))
+ 		{
+ 			alert('Please enter valid weight');
+ 			document.getElementById('weight').focus();
+ 			return false;
+ 		}else calc();
+ 	}
 	function calc(){
 		var height = document.getElementById('height').value;
 		var weight = document.getElementById('weight').value;
@@ -128,6 +93,7 @@
 		alert(message);
 	}
 </script>
-<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>	
+<script type="text/javascript" src="js/jquery.js"></script>	
+<script type="text/javascript" src="js/bootstrap.min.js"></script>	
   </body>
 </html>

@@ -1,5 +1,0 @@
-<icon src="bootstrap/images/icon.png" />
-<icon src="bootstrap/images/icon.png"   gap:platform="android"    gap:density="ldpi" />
-<icon src="bootstrap/images/icon.png"   gap:platform="android"    gap:density="mdpi" />
-<icon src="bootstrap/images/icon.png"   gap:platform="android"    gap:density="hdpi" />
-<icon src="bootstrap/images/icon.png"  gap:platform="android"    gap:density="xhdpi" />
