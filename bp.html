@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Normal Blood Pressure Calculator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
+  </head>
+<style>
+	body {
+    padding-top: 51px;
+}
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {float:none;}
+</style>
+</head>
+
+<body>
+
+<div role="navigation" class="navbar navbar-default navbar-fixed-top">
+       <div class="container">
+    	<div class="navbar-header">
+           <!--<button data-target=".sidebar-nav" data-toggle="offcanvas" class="navbar-toggle" type="button">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>-->
+           <a href="index.html" class="btn btn-default pull-left">Home</a><a href="#" class="navbar-brand">Normal Blood Pressure Calculator</a>
+    	</div>
+       </div>
+    </div>
+<div class="container" style="overflow:hidden">
+<div class="row" style="margin-top:20px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form">
+        	<fieldset>
+         	<div class="form-group">
+				<h3>Enter Age:</h3>
+				<input type="text" id="age" class="form-control input-lg" placeholder="Enter Age">
+             </div>
+    		<hr>
+			<a href="#" id="submit" class="btn btn-info btn-lg btn-block" onclick="validate();">Calculate</a>
+  			</fieldset>
+		</form>
+        	<br>
+        </div>
+	</div>
+</div>
+<script>
+	function validate(){
+		if (document.getElementById('age').value == '' || document.getElementById('age').value == 0 || isNaN(document.getElementById('age').value) || document.getElementById('age').value < 15 || document.getElementById('age').value > 64)
+		{
+			alert('Please enter age between 15 and 64');
+			document.getElementById('age').focus();
+			return false;
+		}else calc();
+	}
+	function calc(){
+		var age = document.getElementById('age').value;
+		var bp_min,bp_avg,bp_max;
+		if (age<=19)
+		{
+			bp_min = '105/73';
+			bp_avg = '117/77';
+			bp_max = '120/81';
+		}
+		else if (age<=24)
+		{
+			bp_min = '108/75';
+			bp_avg = '120/79';
+			bp_max = '132/83';
+		}
+		else if (age<=29)
+		{
+			bp_min = '109/76';
+			bp_avg = '121/80';
+			bp_max = '133/84';
+		}
+		else if (age<=34)
+		{
+			bp_min = '110/77';
+			bp_avg = '122/81';
+			bp_max = '134/85';
+		}
+		else if (age<=39)
+		{
+			bp_min = '111/78';
+			bp_avg = '123/82';
+			bp_max = '135/86';
+		}
+		else if (age<=44)
+		{
+			bp_min = '112/79';
+			bp_avg = '125/83';
+			bp_max = '137/87';
+		}
+		else if (age<=49)
+		{
+			bp_min = '115/80';
+			bp_avg = '127/84';
+			bp_max = '139/88';
+		}
+		else if (age<=54)
+		{
+			bp_min = '116/81';
+			bp_avg = '129/85';
+			bp_max = '142/89';
+		}
+		else if (age<=59)
+		{
+			bp_min = '118/82';
+			bp_avg = '131/86';
+			bp_max = '144/90';
+		}
+		else if (age<=64)
+		{
+			bp_min = '121/83';
+			bp_avg = '134/87';
+			bp_max = '147/91';
+		}
+		message="Minimum BP: "+bp_min+" mm/Hg\n\nAverage BP: "+bp_avg+" mm/Hg\n\nMaximum BP: "+bp_max+" mm/Hg";
+		alert(message);
+	}
+</script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>	
+  </body>
+</html>
