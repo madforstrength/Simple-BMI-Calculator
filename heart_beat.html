@@ -61,9 +61,9 @@
 </div>
 <script>
 	function validate(){
-		if (document.getElementById('age').value == '' || document.getElementById('age').value == 0 || isNaN(document.getElementById('age').value))
+		if (document.getElementById('age').value == '' || document.getElementById('age').value == 0 || isNaN(document.getElementById('age').value) || document.getElementById('age').value < 15 || document.getElementById('age').value > 64)
 		{
-			alert('Please enter valid age');
+			alert('Please enter age between 15 and 64');
 			document.getElementById('age').focus();
 			return false;
 		}else calc();
