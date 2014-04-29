@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Add Profile - Simple BMI Calculator</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+<style> body {padding-top: 51px;}.navbar-header {float: left;padding: 15px;text-align: center;width: 100%;}.navbar-brand {float:none;}</style>
+</head>
+<body>
+<div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+       <div class="container">
+    	<div class="navbar-header">
+           <a href="index.html" class="btn btn-default pull-left">Home</a><a href="#" class="navbar-brand">Add Profile</a>
+    	</div>
+       </div>
+    </div>
+<div class="container" style="overflow:hidden">
+<div class="row" style="margin-top:20px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="content">
+    	<form role="form">
+        	<fieldset>
+        	<div class="form-group">
+				<h3>Enter Name:</h3>
+				<input type="text" id="name" class="form-control input-lg" placeholder="Enter Name">
+            </div>
+         	<div class="form-group">
+				<h3>Enter Age:</h3>
+				<input type="text" id="age" class="form-control input-lg" placeholder="Enter Age">
+            </div>
+         	<div class="form-group">
+				<h3>Enter Height:</h3>
+				<input type="text" id="height" class="form-control input-lg" placeholder="Enter Height">
+             </div>
+            <div class="form-group">
+                <select id="height_unit" class="form-control input-lg">
+                    <option value="inches" selected="selected">Inches</option>
+                    <option value="cm">Centimeters</option>
+                </select>
+            </div>
+    		<hr>
+			<div class="form-group">
+				<h3>Enter Weight:</h3>
+				<input type="text" id="weight" class="form-control input-lg" placeholder="Enter Weight">
+            </div>
+			<div class="form-group">
+				<select id="weight_unit" class="form-control input-lg">
+					<option value="pounds" selected="select ed">Pounds</option>
+					<option value="kg">Kilograms</option>
+				</select>
+            </div>
+			<a href="#" id="submit" class="btn btn-info btn-lg btn-block">Submit</a>
+  			</fieldset>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+		// Prevent form submission on enter
+		$(window).keydown(function(event){
+		    if(event.keyCode == 13) {
+		      event.preventDefault();
+		      return false;
+		    }
+		});
+		var profiles = localStorage.getItem("profiles");
+		profiles = JSON.parse(profiles); 
+		if(profiles == null) 
+			profiles = [];
+		function addRecord(rec)
+		{ 
+			var profile = JSON.stringify(rec); 
+			profiles.push(profile); 
+			localStorage.setItem("profiles", JSON.stringify(profiles)); 
+			alert("Profile Created Successfully");
+			window.location = 'profiles_list.html';
+			return true; 
+		}
+		function validate(){
+		if ($('#name').val() == '') {
+			alert('Please enter name');
+			$('#name').focus();
+			return false;
+		}
+		else 
+			if ($('#age').val() == '' || $('#age').val() == 0 || isNaN($('#age').val()) || $('#age').val() < 15 || $('#age').val() > 64) {
+				alert('Please enter age between 15 and 64');
+				$('#age').focus();
+				return false;
+			}
+			else 
+				if ($('#height').val() == '' || $('#height').val() == 0 || isNaN($('#height').val())) {
+					alert('Please enter valid height');
+					$('#height').focus();
+					return false;
+				}
+				else 
+					if ($('#weight').val() == '' || $('#weight').val() == 0 || isNaN($('#weight').val())) {
+						alert('Please enter valid weight');
+						$('#weight').focus();
+						return false;
+					}
+					else {
+						var height = $('#height').val();
+						var weight = $('#weight').val();
+						if ($('#height_unit').val() == 'cm')
+							height = Math.floor(height * 0.39);
+						if ($('#weight_unit').val() == 'kg')
+							weight = Math.floor(weight * 2.2);
+						var rec = { name : $('#name').val(), age : $('#age').val(), height : height, weight : weight }
+						addRecord(rec);
+					}
+	}
+	$('#submit').click(validate);
+	});
+	
+</script>
+  </body>
+</html>

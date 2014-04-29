@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>List of Profiles - Simple BMI Calculator</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+<style> body {padding-top: 51px;}.navbar-header {float: left;padding: 15px;text-align: center;width: 100%;}.navbar-brand {float:none;}</style>
+</head>
+<body>
+<div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+       <div class="container">
+    	<div class="navbar-header">
+           <a href="index.html" class="btn btn-default pull-left">Home</a><a href="#" class="navbar-brand">List of Profiles</a>
+    	</div>
+       </div>
+    </div>
+<div class="container" style="overflow:hidden">
+<div class="row" style="margin-top:20px">
+	<div class="col-xs-12">
+       <a href="profiles_add.html" class="btn btn-default pull-right">Add Profile</a>
+	</div>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="content">
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+		var profiles = localStorage.getItem("profiles");
+		profiles = JSON.parse(profiles); 
+		if(profiles == null) 
+			profiles = [];
+		$('#content').html('<div class="col-xs-3"><b>Name</b></div><div class="col-xs-1"><b>Age</b></div><div class="col-xs-3"><b>Height</b></div><div class="col-xs-3"><b>Weight</b></div><div class="col-xs-1"><b>X</b></div>');
+		for (var i in profiles)
+		{
+			var profile = JSON.parse(profiles[i])
+			$('#content').append('<div class="col-xs-3">'+profile['name']+'</div><div class="col-xs-1">'+profile['age']+'</div><div class="col-xs-3">'+profile['height']+' in</div><div class="col-xs-3">'+profile['weight']+' lbs</div><div class="col-xs-1">X</div>');
+		}
+	});
+</script>
+  </body>
+</html>
