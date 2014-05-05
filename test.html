@@ -1,0 +1,18 @@
+<script>
+	var profiles = localStorage.getItem("profiles");
+	profiles = JSON.parse(profiles); 
+	if(profiles == null) 
+		profiles = [];
+	function addRecord(rec)
+	{ 
+		var profile = JSON.stringify(rec); 
+		profiles.push(profile); 
+		localStorage.setItem("profiles", JSON.stringify(profiles)); 
+		alert("The data was saved.");
+		return true; 
+	}
+	var rec = { name : 'Test1', age : '22', height : '70', weight : '180' }
+	addRecord(rec);
+	console.log(profiles);
+
+</script>
